@@ -1,0 +1,44 @@
+<section class="search-content my-3 animated fadeIn">
+    <div class="container">
+        <div class="form-group row">
+            <label class="col-md-2 offset-md-1 col-form-label" for="search">
+                Search
+            </label>
+            <div class="col-md-8">
+                <input class="form-control"
+                    id="search"
+                    type="text"
+                    name="search"
+                    placeholder="Search a movie"
+                    required
+                    [(ngModel)]="search"
+                    (keyup.enter)="searchMovie()" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 offset-md-1 alert alert-warning"
+                role="alert"
+                *ngIf="loading">
+                <strong>Loading!</strong> Please wait.
+            </div>
+        </div>
+        <div class="card-columns">
+            <div class="card" *ngFor="let movie of moviesService.movies">
+                <img class="card-img-top img-fluid"
+                    [src]="movie | image"
+                    [alt]="movie.original_title" />
+                <div class="card-block">
+                    <h4 class="card-title">{{movie.original_title}}</h4>
+                    <p class="card-text">
+                        {{(movie.overview.length > 100) ? (movie.overview | slice:0:97) + '...' : movie.overview}}
+                    </p>
+                    <button class="btn btn-outline-primary btn-block"
+                        type="button"
+                        [routerLink]="['/movie', movie.id, 'search', search]">
+                        See more
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

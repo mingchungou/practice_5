@@ -1,0 +1,31 @@
+<section class="search-content body-content animated fadeIn">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4">
+                <label>Search artist</label>
+                <input class="form-control"
+                    type="text"
+                    name="searchValue"
+                    placeholder="Searching by artist"
+                    [(ngModel)]="searchValue"
+                    (keyup)="searchArtist()" />
+                <hr />
+            </div>
+            <div class="col-xl-8">
+                <div class="row">
+                    <div class="col-sm-4 col-md-3 image-content"
+                        *ngFor="let artist of spotifyService.artists"
+                        [routerLink]="['/artist', artist.id]">
+                        <div class="img-thumbnail cursor-pointer">
+                            <img class="img-fluid"
+                                [src]="artist.images | unknownImage"
+                                [alt]="searchValue + ' image'" />
+                        </div>
+                        <p class="text-center my-2 cursor-pointer">{{artist.name}}</p>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

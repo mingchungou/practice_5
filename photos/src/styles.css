@@ -1,0 +1,36 @@
+.main-content .header-content .container .navbar {
+    padding: 0.5rem 0;
+}
+
+/************ Upload content styles ************/
+.main-content .upload-content .container .drop-zone {
+	border: dotted 3px lightgray;
+	opacity: 0.5;
+	color: #666;
+	text-align: center
+}
+
+.main-content .upload-content .container .file-over {
+	border-color: #1e90ff;
+}
+
+.main-content .upload-content .container .table {
+	margin-top: 2rem;
+}
+
+.main-content .upload-content .container .table thead tr th:first-of-type {
+	border-top-left-radius: 10px;
+}
+
+.main-content .upload-content .container .table thead tr th:last-of-type {
+	border-top-right-radius: 10px;
+}
+
+.main-content .upload-content .container .table tr th,
+.main-content .upload-content .container .table tr td {
+	vertical-align: middle;
+}
+
+.main-content .upload-content .container .table .progress .progress-bar {
+    transition: all 1s ease;
+}

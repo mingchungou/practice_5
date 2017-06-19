@@ -1,0 +1,35 @@
+<nav class="navbar navbar-toggleable-sm navbar-inverse">
+    <button class="navbar-toggler navbar-toggler-right"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Movies App</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"
+                *ngFor="let item of items"
+                routerLinkActive="active">
+                <a class="nav-link" [routerLink]="[item.routerLink]">
+                    {{item.name}}
+                </a>
+            </li>
+        </ul>
+        <form class="form-inline">
+            <input class="form-control mr-2"
+                type="text"
+                placeholder="Search movie"
+                (keyup.enter)="searchMovie(searchText.value)"
+                #searchText />
+            <button class="btn btn-outline-success"
+                type="button"
+                (click)="searchMovie(searchText.value)">
+                Search
+            </button>
+        </form>
+    </div>
+</nav>

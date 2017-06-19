@@ -1,0 +1,114 @@
+/************ General styles ************/
+.main-content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.main-content .body-content > .container {
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+}
+
+.main-content .body-content > .container hr {
+    margin-top: 0;
+}
+
+/************ General animation ************/
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.fast {
+    animation-duration: 0.4s;
+    animation-fill-mode: both;
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/************ Header content styles ************/
+.main-content .header-content .container .navbar {
+    padding: 0.5rem 0;
+}
+
+.main-content .header-content .container .navbar .navbar-toggler {
+    padding: 0.4rem .75rem;
+    right: 0;
+    cursor: pointer;
+}
+
+.main-content .header-content .container .navbar .navbar-toggler:focus {
+    outline: 0;
+}
+
+.main-content .header-content .container .navbar .navbar-collapse {
+    align-items: center;
+}
+
+.main-content .header-content .container .navbar .form-inline button {
+    cursor: pointer;
+}
+
+/************ Pirate content styles ************/
+.main-content .pirate-content .container .row .col-md-8 .flag-content img {
+    width: 150px;
+    transition: all 0.5s ease;
+}
+
+/************ Media queries ************/
+@media (max-width: 576px) {
+    /************ General styles ************/
+    .main-content .card-columns {
+        column-count: 1;
+    }
+
+    .main-content .card-columns .card:not(:last-child) {
+        margin-bottom: 0.75rem;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+    /************ General styles ************/
+    .main-content .card-columns {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    /************ Header content styles ************/
+    .main-content .header-content .container .navbar .navbar-brand {
+        margin-right: 0;
+        max-width: 100px;
+    }
+
+    .main-content .header-content .container .navbar .navbar-nav .nav-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .main-content .header-content .container .navbar .navbar-nav,
+    .main-content .header-content .container .navbar .form-inline {
+        padding: 0.5rem 0;
+    }
+
+    .main-content .header-content .container .navbar .form-inline input {
+        flex: 1 1 0px;
+    }
+
+    /************ Pirate content styles ************/
+    .main-content .pirate-content .container .row .col-md-8 .flag-content img {
+        width: 200px;
+    }
+}

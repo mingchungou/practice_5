@@ -1,0 +1,44 @@
+.main-content .header-content .container .navbar {
+    padding: 0.5rem 0;
+}
+
+.main-content agm-map {
+    height: 400px;
+}
+
+.main-content agm-map .agm-map-container-inner .agm-info-window-content strong,
+.main-content agm-map .agm-map-container-inner .agm-info-window-content p {
+    margin-bottom: 0.2rem;
+}
+
+/************ General animation ************/
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.fast {
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

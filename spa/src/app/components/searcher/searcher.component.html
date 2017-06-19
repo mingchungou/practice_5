@@ -1,0 +1,33 @@
+<section class="searcher-content body-content">
+    <div class="container">
+        <h1 class="animated fadeIn fast">Searching: {{valueSearched}}</h1>
+        <hr />
+        <div class="row" *ngIf="pirates.length === 0">
+            <div class="col-md-12">
+                <div class="alert alert-info" role="alert">
+                    Didn't get any result. Try another
+                </div>
+            </div>
+        </div>
+        <main class="card-columns animated fadeIn">
+            <div class="card text-center" *ngFor="let pirate of pirates">
+                <img class="card-img-top img-fluid"
+                    [src]="pirate.img"
+                    [alt]="pirate.name" />
+                <div class="card-block">
+                    <h4 class="card-title">{{pirate.name}}</h4>
+                    <p class="card-text text-left">{{pirate.ability}}</p>
+                    <p class="card-text">
+                        <small class="text-muted">{{pirate.birth}}</small>
+                    </p>
+
+                    <!-- Router navigation by html-->
+                    <a class="btn btn-outline-primary btn-block"
+                        [routerLink]="['/pirate', pirate.id]">
+                        See more
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+</section>

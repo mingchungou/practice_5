@@ -1,0 +1,47 @@
+<section class="artist-content body-content animated fadeIn">
+    <div class="container" *ngIf="artist">
+        <div class="row">
+            <div class="col-md-3 text-center image-content">
+                <div class="img-thumbnail">
+                    <img class="img-fluid"
+                        [src]="artist.images | unknownImage"
+                        [alt]="artist.name + ' image'" />
+                </div>
+            </div>
+            <div class="col-md-9">
+                <h3 class="mt-3">
+                    {{artist.name}} <small>Papularity {{artist.popularity}}</small>
+                </h3>
+                <hr />
+                <a class="btn btn-outline-success"
+                    [href]="artist.external_urls?.spotify"
+                    target="_blank">Watch page</a>
+                <a class="btn btn-outline-danger ml-3" [routerLink]="['/search']">
+                    Go back
+                </a>
+            </div>
+        </div>
+        <div class="mt-3 track-content" *ngIf="artistTrack">
+            <h3>Top tracks of {{artist.name}}</h3>
+            <hr />
+            <ul class="list-group">
+                <li class="list-group-item bg-inverse"
+                    *ngFor="let track of artistTrack; let i = index">
+                    <div class="first-row">
+                        <span>{{i}} - </span>
+                        <h6>{{track.name}}</h6>
+                        <small>Popularity: {{track.popularity}}%</small>
+                    </div>
+                    <div class="second-row mt-2 w-100">
+                        <iframe class="w-100"
+                            [src]="track.uri | securedom:'https://open.spotify.com/embed?uri='"
+                            height="80"
+                            frameborder="0"
+                            allowtransparency="true">
+                        </iframe>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,31 @@
+<section class="pirate-content body-content">
+    <div class="container">
+        <h1 class="animated fadeIn fast">
+            {{pirate.name | uppercase}} <small>({{pirate.birth | date:'y'}})</small>
+        </h1>
+        <hr />
+        <main class="row animated fadeIn">
+            <div class="image-content col-md-4 text-center">
+                <img class="img-fluid" [src]="pirate.img" [alt]="pirate.name" />
+                <a class="btn btn-outline-danger btn-block my-3"
+                    (click)="location.back()">
+                    Go back
+                </a>
+            </div>
+            <div class="col-md-8">
+                <p>{{pirate.ability}}</p>
+                <div class="flag-content text-center">
+                    <img src="assets/img/mugiwara-flag.svg"
+                        alt="mugiwara flag"
+                        *ngIf="pirate.band == 'mugiwara'" />
+                    <img src="assets/img/shanks-flag.svg"
+                        alt="shanks flag"
+                        *ngIf="pirate.band == 'shanks'" />
+                    <img src="assets/img/whitebeard-flag.svg"
+                        alt="whitebeard flag"
+                        *ngIf="pirate.band == 'whitebeard'" />
+                </div>
+            </div>
+        </main>
+    </div>
+</section>

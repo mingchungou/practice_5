@@ -1,0 +1,33 @@
+<div class="row mb-1">
+    <div class="col-md-12">
+        <button class="btn btn-outline-danger cursor-pointer"
+            type="button"
+            (click)="chatService.logout()">
+            Logout
+        </button>
+    </div>
+</div>
+<section class="chat-content animated fadeIn">
+    <h2>Chat</h2>
+    <hr />
+    <main class="message-content">
+        <article class="messaget"
+            *ngFor="let chat of chatService.chats | async"
+            [ngClass]="{'text-right': chatService.user.uid === chat.uid}">
+            <span class="badge"
+                [ngClass]="{'badge-primary': chatService.user.uid === chat.uid,
+                            'badge-success': chatService.user.uid !== chat.uid}">
+                {{chat.name}}
+            </span>
+            <p>{{chat.message}}</p>
+        </article>
+    </main>
+    <input class="form-control mt-1"
+        id="message"
+        type="text"
+        name="message"
+        placeholder="Your message"
+        required
+        [(ngModel)]="message"
+        (keyup.enter)="send()" />
+</section>

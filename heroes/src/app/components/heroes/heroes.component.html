@@ -1,0 +1,58 @@
+<section class="heroes-content animated fadeIn">
+    <h1>Heroes</h1>
+    <hr />
+    <div class="row mb-1">
+        <div class="col-md-12 text-right">
+            <button class="btn btn-outline-primary cursor-pointer"
+                type="button"
+                [routerLink]="['/hero', 'add']">
+                Add
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">From</th>
+                            <th class="text-center">Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let key of heroes | keys; let i = index">
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{heroes[key].name}}</td>
+                            <td>{{heroes[key].from}}</td>
+                            <td class="text-center">
+                                <button class="btn btn-outline-success"
+                                    type="button"
+                                    [routerLink]="['/hero', key]">
+                                    Edit
+                                </button>
+                                <button class="btn btn-outline-danger"
+                                    type="button"
+                                    (click)="removeHero(key)">
+                                    Remove
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="alert alert-info"
+                    role="alert"
+                    *ngIf="(heroes | keys).length === 0 && !loading">
+                    <strong>Do not have</strong> any hero to show.
+                </div>
+                <div class="alert alert-warning"
+                    role="alert"
+                    *ngIf="loading">
+                    <strong>Loading!</strong> Please wait.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

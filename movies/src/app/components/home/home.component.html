@@ -1,0 +1,15 @@
+<section class="home-content mb-3">
+    <section class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-3">Movies App</h1>
+            <p class="lead">This is a movie application.</p>
+        </div>
+    </section>
+    <div class="container">
+        <app-gallery [movies]="billboard | slice:0:6" title="Billboard"></app-gallery>
+        <app-gallery [movies]="topTracks | slice:0:6" title="Top Tracks"></app-gallery>
+        <app-gallery [movies]="topTracksKids | slice:0:6"
+            title="Top Tracks Kids">
+        </app-gallery>
+    </div>
+</section>

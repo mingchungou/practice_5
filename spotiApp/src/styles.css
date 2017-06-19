@@ -1,0 +1,256 @@
+/************ General styles ************/
+.main-content {
+    display: flex;
+    flex-direction: column;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.main-content .body-content > .container {
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+    min-height: 100vh;
+}
+
+.main-content .body-content > .container hr {
+    border-color: #ffffff;
+}
+
+.main-content .cursor-pointer {
+    cursor: pointer;
+}
+
+.main-content .image-content:focus {
+    outline: 0;
+}
+
+.main-content .image-content .img-thumbnail {
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+    transition: all 0.5s ease;
+}
+
+.main-content .image-content .img-thumbnail .img-fluid {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/************ General animation ************/
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.fast {
+    animation-duration: 0.4s;
+    animation-fill-mode: both;
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/************ Header content styles ************/
+.main-content .header-content .container .navbar {
+    padding: 0.5rem 0;
+}
+
+.main-content .header-content .container .navbar .navbar-toggler {
+    padding: 0.4rem .75rem;
+    right: 0;
+    cursor: pointer;
+}
+
+.main-content .header-content .container .navbar .navbar-toggler:focus {
+    outline: 0;
+}
+
+.main-content .header-content .container .navbar .navbar-collapse {
+    align-items: center;
+}
+
+/************ Home content styles ************/
+.main-content .home-content .carousel {
+    margin-top: 62px;
+}
+
+.main-content .home-content .carousel .carousel-inner .carousel-item {
+    height: calc(100vh - 62px);
+}
+
+.main-content .home-content .carousel .carousel-inner .carousel-item .img-fluid {
+    object-fit: cover;
+}
+
+.main-content .home-content > .container {
+    padding-top: 2rem;
+    min-height: auto;
+}
+
+/************ Search content styles ************/
+.main-content .search-content > .container .row .col-xl-8 .row .col-sm-4 hr {
+    margin: 0 0 2rem;
+}
+
+/************ Artist content styles ************/
+.main-content .artist-content .image-content .img-thumbnail,
+.main-content .artist-content .image-content .img-thumbnail .img-fluid {
+    border-radius: 100%;
+}
+
+.main-content .artist-content > .container .row .col-md-9 .btn-outline-success:focus {
+    color: #5cb85c;
+}
+
+.main-content .artist-content > .container .row .col-md-9 .btn-outline-danger:focus {
+    color: #d9534f;
+}
+
+.main-content .artist-content > .container .row .col-md-9 .btn-outline-success:focus:hover,
+.main-content .artist-content > .container .row .col-md-9 .btn-outline-danger:focus:hover {
+    color: #ffffff;
+}
+
+.main-content .artist-content > .container .track-content .list-group .list-group-item {
+    margin-bottom: 2px;
+    border: 0;
+}
+
+.main-content .artist-content > .container .track-content .list-group .list-group-item .first-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.main-content .artist-content > .container .track-content .list-group .list-group-item .first-row span {
+    flex: 0.5 1 0px;
+}
+
+.main-content .artist-content > .container .track-content .list-group .list-group-item .first-row h6 {
+    flex: 4 1 0px;
+    margin-bottom: 0;
+}
+
+.main-content .artist-content > .container .track-content .list-group .list-group-item .first-row small {
+    flex: 1 1 0px;
+    text-align: right;
+}
+
+/************ Media queries ************/
+@media (max-width: 576px) {
+    /************ General styles ************/
+    .main-content .image-content .img-thumbnail {
+        position: relative;
+        padding-top: 100%;
+        width: 100%;
+        height: auto;
+    }
+
+    .main-content .image-content .img-thumbnail .img-fluid {
+        position: absolute;
+        top: 0.25rem;
+        right: 0.25rem;
+        bottom: 0.25rem;
+        left: 0.25rem;
+        width: calc(100% - 0.5rem);
+        height: calc(100% - 0.5rem);
+    }
+
+    /************ Home content styles ************/
+    .main-content .home-content .carousel .carousel-inner .carousel-item {
+        height: calc(50vh - 62px);
+    }
+
+    /************ Artist content styles ************/
+    .main-content .artist-content > .container .track-content .list-group .list-group-item .first-row span {
+        display: none;
+    }
+
+    .main-content .artist-content > .container .track-content .list-group .list-group-item .first-row small {
+        margin-left: 0.5rem;
+    }
+}
+
+@media (max-width: 700px) {
+    /************ General styles ************/
+    .main-content .image-content .img-thumbnail {
+        transition: none;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+    /************ Artist content styles ************/
+    .main-content .artist-content .image-content .img-thumbnail {
+        width: 510px;
+        height: 510px;
+    }
+}
+
+@media (max-width: 768px) {
+    /************ Header content styles ************/
+    .main-content .header-content .container .navbar .navbar-brand {
+        margin-right: 0;
+        max-width: 125px;
+    }
+
+    .main-content .header-content .container .navbar .navbar-nav {
+        padding: 0.5rem 0;
+    }
+
+    .main-content .header-content .container .navbar .navbar-collapse .navbar-nav .nav-item:not(:last-child) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /************ Home content styles ************/
+    .main-content .home-content .container .option-content .row .col-md-4:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+
+    /************ Artist content styles ************/
+    .main-content .artist-content > .container .row .col-md-9 h3 {
+        text-align: center;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    /************ Artist content styles ************/
+    .main-content .artist-content .image-content .img-thumbnail {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    /************ Search content styles ************/
+    .main-content .search-content .image-content .img-thumbnail {
+        width: 200px;
+        height: 200px;
+    }
+
+    /************ Artist content styles ************/
+    .main-content .artist-content .image-content .img-thumbnail {
+        width: 210px;
+        height: 210px;
+    }
+}
+
+@media (min-width: 1200px) {
+    /************ Artist content styles ************/
+    .main-content .artist-content .image-content .img-thumbnail {
+        width: 255px;
+        height: 255px;
+    }
+}

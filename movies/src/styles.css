@@ -1,0 +1,74 @@
+/************ Header content styles ************/
+.main-content .header-content .container .navbar {
+    padding: 0.5rem 0;
+}
+
+/************ Home content styles ************/
+.main-content .home-content .movie-pic-big,
+.main-content .home-content .movie-pic-small {
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.main-content .home-content .movie-pic-big {
+    height: 280px;
+}
+
+.main-content .home-content .movie-pic-small {
+    height: 140px;
+}
+
+.main-content .home-content .movie-pic-big:focus,
+.main-content .home-content .movie-pic-small:focus {
+    outline: 0;
+}
+
+.main-content .home-content .movie-pic-title {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+}
+
+.main-content .home-content .row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.main-content .home-content .row [class^="col"] {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.main-content .home-content app-gallery:not(:first-of-type) {
+    display: block;
+    margin-top: 2rem;
+}
+
+/************ General animation ************/
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.fast {
+    animation-duration: 0.4s;
+    animation-fill-mode: both;
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

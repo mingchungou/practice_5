@@ -1,0 +1,61 @@
+<section class="upload-content my-3">
+    <div class="container">
+        <div class="alert alert-info" role="alert" *ngIf="photosService.filesUploadStatus">
+            <strong>Uploading!</strong> Please wait.
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <h3 class="mb-3 text-center">Select a file</h3>
+                <div class="well drop-zone p-3"
+                    ngDropFiles
+                    [ngClass]="{'file-over': onDropZone}"
+                    (fileOn)="fileOnDropZone($event)"
+                    [files]="files">
+                    <h4>Drop the files here</h4>
+                    <img src="/assets/img/drop-images.png" alt="Drop icon image" />
+                </div>
+            </div>
+            <div class="col-md-8 text-center">
+                <h3>Upload files</h3>
+                <button class="btn btn-success"
+                    type="button"
+                    (click)="uploadImages()"
+                    [disabled]="files.length === 0 || !enableUpload">
+                    Upload to Firebase
+                </button>
+                <button class="btn btn-danger"
+                    type="button"
+                    (click)="clearFiles()"
+                    [disabled]="photosService.filesUploadStatus">
+                    Clear files
+                </button>
+                <table class="table" *ngIf="files.length > 0">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>FileName</th>
+                            <th>File Size</th>
+                            <th>Upload Progress</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let file of files">
+                            <th scope="row"
+                                [ngClass]="{'text-success': file.uploadStatus}">
+                                {{file.fileName}}
+                            </th>
+                            <td>{{file.file.size / 1024 / 1024 | number:".2"}} MB</td>
+                            <td>
+                                <div class="progress">
+                                    <div class="progress-bar"
+                                        role="progressbar"
+                                        [ngStyle]="{'width': file.progressPor + '%'}">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

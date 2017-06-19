@@ -1,0 +1,36 @@
+<nav class="navbar navbar-toggleable-sm navbar-inverse">
+    <button class="navbar-toggler navbar-toggler-right"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarText"
+        aria-controls="navbarText"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Auth App</a>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"
+                *ngFor="let item of items"
+                routerLinkActive="active"
+                [ngClass]="{'text-hide': item.login && !authService.isAuthenticated()}">
+                <a class="nav-link" [routerLink]="[item.routerLink]">
+                    {{item.name}}
+                </a>
+            </li>
+        </ul>
+        <button class="btn btn-outline-success btn-sm"
+            type="button"
+            (click)="authService.login()"
+            *ngIf="!authService.isAuthenticated()">
+            Login
+        </button>
+        <button class="btn btn-outline-danger btn-sm"
+            type="button"
+            (click)="authService.logout()"
+            *ngIf="authService.isAuthenticated()">
+            Logout
+        </button>
+    </div>
+</nav>

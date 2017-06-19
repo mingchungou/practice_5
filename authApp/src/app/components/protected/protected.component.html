@@ -1,0 +1,20 @@
+<section class="my-3">
+    <div class="container">
+        <h1>Profile</h1>
+        <hr />
+        <div class="row" *ngIf="profile">
+            <div class="col-md-4">
+                <img class="img-thumbnail img-fluid"
+                    [src]="profile.picture"
+                    [alt]="profile.name" />
+            </div>
+            <div class="col-md-8">
+                <ul class="list-group">
+                    <li class="list-group-item">{{profile.name}}</li>
+                    <li class="list-group-item">{{profile.gender}}</li>
+                    <li class="list-group-item">{{profile.updated_at | date:'dd MM yyyy'}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

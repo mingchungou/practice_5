@@ -1,0 +1,47 @@
+<section class="movie-content my-3 animated fadeIn"
+    *ngIf="movie">
+    <div class="container">
+        <h1>{{movie.original_title}} ({{movie.release_date | date:'y'}})</h1>
+        <hr />
+        <div class="row">
+            <div class="col-md-5">
+                <img class="img-thumbnail img-fluid"
+                    [src]="movie | image:true"
+                    [alt]="movie.original_title" />
+            </div>
+            <div class="col-md-7">
+                <p>Production Co:
+                    <strong *ngFor="let pro of movie.production_companies; let i = index">
+                        {{pro.name}}{{(i !== movie.production_companies.length - 1) ? ', ' : ''}}
+                    </strong>
+                </p>
+                <p>Genres:
+                    <strong *ngFor="let gen of movie.genres; let i = index">
+                        {{gen.name}}{{(i !== movie.genres.length - 1) ? ', ' : ''}}
+                    </strong>
+                </p>
+                <p>Runtime: <strong>{{movie.runtime}}min</strong></p>
+                <p>Release Date:
+                    <strong>{{movie.release_date | date:'y'}}</strong>
+                </p>
+                <p>Tagline: <strong>{{movie.tagline}}</strong></p>
+                <p>Popularity:
+                    <strong>{{getPopularity(movie.popularity)}} / 10</strong>
+                </p>
+                <p>Votes: <strong>{{movie.vote_average}}</strong></p>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-12">
+                <p class="text-justify">{{movie.overview}}</p>
+            </div>
+            <div class="col-12 text-right">
+                <button class="btn btn-outline-danger "
+                    type="button"
+                    [routerLink]="['/' + previousPath, previousSearch]">
+                    Back
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

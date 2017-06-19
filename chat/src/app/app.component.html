@@ -1,0 +1,8 @@
+<section class="main-content my-3">
+    <div class="container">
+        <h1>Fire-Chat</h1>
+        <hr />
+        <app-login *ngIf="!chatService.user"></app-login>
+        <app-chat *ngIf="chatService.user"></app-chat>
+    </div>
+</section>

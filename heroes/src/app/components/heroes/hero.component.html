@@ -1,0 +1,72 @@
+<section class="animated fadeIn">
+    <h2>Hero <small>{{hero.name}}</small></h2>
+    <hr />
+    <div class="row mb-1">
+        <div class="col-md-12 text-right">
+            <button class="btn btn-outline-danger cursor-pointer"
+                type="button"
+                [routerLink]="['/heroes']">
+                Back
+            </button>
+            <button class="btn btn-outline-success cursor-pointer"
+                type="button"
+                (click)="addHero(form)"
+                [disabled]="heroID === 'add'">
+                New
+            </button>
+        </div>
+    </div>
+    <form #form="ngForm" (ngSubmit)="save(form)">
+        <div class="form-group row">
+            <label class="col-md-2 offset-md-1 col-form-label" for="name">
+                Name
+            </label>
+            <div class="col-md-8">
+                <input class="form-control"
+                    id="name"
+                    type="text"
+                    name="name"
+                    placeholder="Write your name"
+                    required
+                    [(ngModel)]="hero.name" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 offset-md-1 col-form-label" for="from">
+                From
+            </label>
+            <div class="col-md-8">
+                <input class="form-control"
+                    id="from"
+                    type="text"
+                    name="from"
+                    placeholder="Write your childhood"
+                    required
+                    [(ngModel)]="hero.from" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 offset-md-1 col-form-label" for="from">
+                Intro
+            </label>
+            <div class="col-md-8">
+                <textarea class="form-control"
+                    id="intro"
+                    name="intro"
+                    rows="5"
+                    placeholder="Write a self description"
+                    required
+                    [(ngModel)]="hero.intro"></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-8 offset-md-3">
+                <button class="btn btn-outline-primary cursor-pointer"
+                    type="submit"
+                    [disabled]="form.invalid">
+                    Save
+                </button>
+            </div>
+        </div>
+    </form>
+</section>
