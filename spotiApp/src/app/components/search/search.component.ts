@@ -1,5 +1,6 @@
 
-import {Component, OnInit} from "@angular/core";
+import {Component, OnDestroy} from "@angular/core";
+import {Subscription} from "rxjs/Rx";
 
 //Loading services
 import {SpotifyService} from "../../services/spotify.service";
@@ -8,20 +9,23 @@ import {SpotifyService} from "../../services/spotify.service";
     selector: "app-search",
     templateUrl: "./search.component.html"
 })
-export class SearchComponent implements OnInit {
-    private searchValue:string = "";
+export class SearchComponent implements OnDestroy {
+    private artistsSearchSubs: Subscription
+    private searchValue: string = "";
 
-    constructor(private spotifyService:SpotifyService) {
-
-    };
-
-    ngOnInit() {
+    constructor(private spotifyService: SpotifyService) {
 
     };
 
-    private searchArtist():void {
-        if (this.searchValue) {
-            this.spotifyService.getArtists(this.searchValue).subscribe();
+    ngOnDestroy() {
+        if (this.artistsSearchSubs) {
+            this.artistsSearchSubs.unsubscribe();
+        }
+    };
+
+    private searchArtist(): void {
+        if (this.searchValue.length > 0) {
+            this.artistsSearchSubs = this.spotifyService.getArtists(this.searchValue).subscribe();
         }
     };
 };

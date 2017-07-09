@@ -6,12 +6,12 @@ import "rxjs/Rx";
 
 @Injectable()
 export class YoutubeService {
-    private youtubeUrl:string = "https://www.googleapis.com/youtube/v3";
-    private apiKey:string = "AIzaSyBfEA3E8Bik2cr_3h6tA12JFV4Ns6H-Cf8";
-    private playlistId:string = "UUbbO4l6IVq3PwR4nDJa21Ww";
-    private nextPageToken:string = "";
+    private youtubeUrl: string = "https://www.googleapis.com/youtube/v3";
+    private apiKey: string = "AIzaSyBfEA3E8Bik2cr_3h6tA12JFV4Ns6H-Cf8";
+    private playlistId: string = "UUbbO4l6IVq3PwR4nDJa21Ww";
+    private nextPageToken: string = "";
 
-    constructor(private http:Http) {
+    constructor(private http: Http) {
 
     };
 
@@ -19,9 +19,9 @@ export class YoutubeService {
     Function for getting videos of a playlist. But each time, it returns only 10
     videos.
     */
-    public getVideos():Observable<any> {
-        let url = `${this.youtubeUrl}/playlistItems`;
-        let params:URLSearchParams = new URLSearchParams();
+    public getVideos(): Observable<any> {
+        let url: string = `${this.youtubeUrl}/playlistItems`;
+        let params: URLSearchParams = new URLSearchParams();
 
         params.set("part", "snippet");
         params.set("maxResults", "10");
@@ -33,8 +33,8 @@ export class YoutubeService {
         }
 
         return this.http.get(url, {search: params}).map(res => {
-            let result:object = res.json();
-            let videos:any[] = [];
+            let result: object = res.json();
+            let videos: any[] = [];
 
             for (let video of result["items"]) {
                 videos.push(video.snippet);
@@ -44,5 +44,5 @@ export class YoutubeService {
 
             return videos;
         });
-    }
+    };
 };

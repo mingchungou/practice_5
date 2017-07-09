@@ -5,8 +5,8 @@ import {Pipe, PipeTransform} from "@angular/core";
     name: "image"
 })
 export class ImagePipe implements PipeTransform {
-    transform(movie:any, poster:boolean = false):string {
-        let url:string = "http://image.tmdb.org/t/p/w500";
+    transform(movie: any, poster: boolean = false): string {
+        let url: string = "http://image.tmdb.org/t/p/w500";
 
         if (poster) {
             if (movie.poster_path) {

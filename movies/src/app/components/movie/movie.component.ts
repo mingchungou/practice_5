@@ -1,6 +1,7 @@
 
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, OnDestroy} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
+import {Subscription} from "rxjs/Rx";
 
 //Loading services
 import {MoviesService} from "../../services/movies.service";
@@ -9,18 +10,19 @@ import {MoviesService} from "../../services/movies.service";
     selector: "app-movie",
     templateUrl: "./movie.component.html"
 })
-export class MovieComponent implements OnInit {
-    private movie:object;
-    private previousPath:string = "";
-    private previousSearch:string = "";
+export class MovieComponent implements OnInit, OnDestroy {
+    private paramsSubs: Subscription;
+    private movie: object;
+    private previousPath: string = "";
+    private previousSearch: string = "";
 
-    constructor(public moviesService:MoviesService,
-                private activatedRoute:ActivatedRoute) {
+    constructor(public moviesService: MoviesService,
+                private activatedRoute: ActivatedRoute) {
 
     };
 
     ngOnInit() {
-        this.activatedRoute.params.subscribe((parameters:object) => {
+        this.paramsSubs = this.activatedRoute.params.subscribe((parameters: object) => {
             this.moviesService.getMovie(parameters["id"]).subscribe(data => {
                 console.log(this.movie);
                 this.movie = data;
@@ -33,7 +35,11 @@ export class MovieComponent implements OnInit {
         }, err => console.log(err));
     };
 
-    private getPopularity(popularity:number):number {
+    ngOnDestroy() {
+        this.paramsSubs.unsubscribe();
+    };
+
+    private getPopularity(popularity: number): number {
         popularity = Math.round(popularity) / 10;
 
         if (popularity >= 10) {

@@ -1,13 +1,13 @@
 
 import {Injectable} from "@angular/core";
 
-let _window = ():Object => {
+let _window = (): object => {
     return window;
 };
 
 @Injectable()
 export class WindowService {
-    get nativeWindow():any {
+    get nativeWindow(): any {
         return _window();
     };
 };

@@ -1,6 +1,7 @@
 
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
+import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 
 //Loading routes
@@ -34,6 +35,7 @@ import {ArtistComponent} from "./components/artist/artist.component";
     ],
     imports: [
         BrowserModule,
+        FormsModule,
         HttpModule,
         APP_ROUTING
     ],

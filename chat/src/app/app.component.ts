@@ -8,7 +8,7 @@ import {ChatService} from "./services/chat.service";
     templateUrl: "./app.component.html"
 })
 export class AppComponent {
-    constructor(private chatService:ChatService) {
+    constructor(private chatService: ChatService) {
 
     };
 };

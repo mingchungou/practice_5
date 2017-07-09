@@ -9,9 +9,9 @@ import {AuthService} from "../../../services/auth.service";
     templateUrl: "./navbar.component.html"
 })
 export class NavbarComponent implements OnInit {
-    private items:object[] = [];
+    private items: object[] = [];
 
-    constructor(private authService:AuthService) {
+    constructor(private authService: AuthService) {
         authService.handleAuthentication();
     };
 

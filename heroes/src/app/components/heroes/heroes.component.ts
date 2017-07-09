@@ -1,5 +1,6 @@
 
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, OnDestroy} from "@angular/core";
+import {Subscription} from "rxjs/Rx";
 
 //Loading services
 import {HeroesService} from "../../services/heroes.service";
@@ -11,23 +12,33 @@ import {Hero} from "../../interfaces/hero.interface";
     selector: "app-heroes",
     templateUrl: "./heroes.component.html"
 })
-export class HeroesComponent implements OnInit {
-    private heroes:object = {};
-    private loading:boolean = true;
+export class HeroesComponent implements OnInit, OnDestroy {
+    private heroesGetSubs: Subscription;
+    private heroeDeleteSubs: Subscription;
+    private heroes: object = {};
+    private loading: boolean = true;
 
-    constructor(private heroesService:HeroesService) {
+    constructor(private heroesService: HeroesService) {
 
     };
 
     ngOnInit() {
-        this.heroesService.getAll().subscribe(data => {
+        this.heroesGetSubs = this.heroesService.getAll().subscribe(data => {
             this.heroes = data;
             this.loading = false;
         }, err => console.log(err));
     };
 
-    private removeHero(key$:string):void {
-        this.heroesService.remove(key$).subscribe(data => {
+    ngOnDestroy() {
+        this.heroesGetSubs.unsubscribe();
+
+        if (this.heroeDeleteSubs) {
+            this.heroeDeleteSubs.unsubscribe();
+        }
+    };
+
+    private removeHero(key$: string): void {
+        this.heroeDeleteSubs = this.heroesService.remove(key$).subscribe(data => {
             if (!data) {
                 delete this.heroes[key$];
             }

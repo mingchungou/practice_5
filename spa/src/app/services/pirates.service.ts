@@ -6,7 +6,7 @@ import {Pirate} from "../interfaces/pirate.interface";
 
 @Injectable()
 export class PiratesService {
-    private pirates:Pirate[] = [{
+    private pirates: Pirate[] = [{
         id: 1,
         name: "Monkey D. Luffy",
         ability: "As captain of the Straw Hat Pirates, Monkey D. Luffy has immense physical strength, and is capable of lifting up large boulders, breaking stone, shattering steel with his bare hands, pushing apart large buildings and shoulder flipping a huge man; his strength was further proven when he effortlessly stopped a stomp from Donquixote Doflamingo, a tremendously strong man who is twice Luffy's size, with only one foot from an angle with no leverage.",
@@ -72,13 +72,13 @@ export class PiratesService {
     }];
 
     //Function for returning pirates array
-    public getPirates():Pirate[] {
+    public getPirates(): Pirate[] {
         return this.pirates;
     };
 
     //Function for getting a specific pirate by id
-    public getPirateById(id:number):Pirate {
-        let pirateFound:Pirate = null;
+    public getPirateById(id: number): Pirate {
+        let pirateFound: Pirate = null;
 
         for(let pirate of this.pirates) {
             if (pirate.id === id) {
@@ -90,8 +90,8 @@ export class PiratesService {
     };
 
     //Function for searching all pirate names that match to searching value, then return an array
-    public searchPirate(value:string):Pirate[] {
-        let piratesArray:Pirate[] = [];
+    public searchPirate(value: string): Pirate[] {
+        let piratesArray: Pirate[] = [];
         value = value.toLowerCase();
 
         for(let pirate of this.pirates) {

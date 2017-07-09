@@ -1,6 +1,7 @@
 
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
+import {FormsModule} from "@angular/forms";
 
 //Loading routes
 import {APP_ROUTING} from "./app.routes";
@@ -31,6 +32,7 @@ import {SearcherComponent} from "./components/searcher/searcher.component";
     ],
     imports: [
         BrowserModule,
+        FormsModule,
         APP_ROUTING //Router adds here
     ],
     providers: [

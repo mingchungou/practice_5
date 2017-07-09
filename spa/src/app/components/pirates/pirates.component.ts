@@ -13,10 +13,10 @@ import {Pirate} from "../../interfaces/pirate.interface";
     templateUrl: "./pirates.component.html"
 })
 export class PiratesComponent implements OnInit {
-    private pirates:Pirate[] = [];
+    private pirates: Pirate[] = [];
 
-    constructor(private piratesService:PiratesService,
-                private router:Router) {
+    constructor(private piratesService: PiratesService,
+                private router: Router) {
 
     };
 
@@ -26,7 +26,7 @@ export class PiratesComponent implements OnInit {
     };
 
     //Function for navigating to pirate component
-    private navigateToPirate(id:number):void {
+    private navigateToPirate(id: number): void {
         this.router.navigate(["/pirate", id]);
     };
 };

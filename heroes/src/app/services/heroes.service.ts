@@ -9,16 +9,16 @@ import {Hero} from "../interfaces/hero.interface";
 
 @Injectable()
 export class HeroesService {
-    private heroesURL:string = "https://heroes-dd822.firebaseio.com/heroes.json";
-    private heroURL:string = "https://heroes-dd822.firebaseio.com/heroes/";
+    private heroesURL: string = "https://heroes-dd822.firebaseio.com/heroes.json";
+    private heroURL: string = "https://heroes-dd822.firebaseio.com/heroes/";
 
-    constructor(private http:Http) {
+    constructor(private http: Http) {
 
     };
 
-    public add(hero:Hero):Observable<any> {
-        let body:string = JSON.stringify(hero);
-        let headers:Headers = new Headers({
+    public add(hero: Hero): Observable<any> {
+        let body: string = JSON.stringify(hero);
+        let headers: Headers = new Headers({
                 "Content-Type": "application/json"
             });
 
@@ -27,10 +27,10 @@ export class HeroesService {
         }).map(res => res.json());
     };
 
-    public update(hero:Hero, key$:string):Observable<any> {
-        let body:string = JSON.stringify(hero);
-        let url:string = `${this.heroURL}/${key$}.json`;
-        let headers:Headers = new Headers({
+    public update(hero: Hero, key$: string): Observable<any> {
+        let body: string = JSON.stringify(hero);
+        let url: string = `${this.heroURL}/${key$}.json`;
+        let headers: Headers = new Headers({
                 "Content-Type": "application/json"
             });
 
@@ -39,18 +39,18 @@ export class HeroesService {
         }).map(res => res.json());
     };
 
-    public get(key$:string):Observable<any> {
-        let url:string = `${this.heroURL}/${key$}.json`;
+    public get(key$: string): Observable<any> {
+        let url: string = `${this.heroURL}/${key$}.json`;
 
         return this.http.get(url).map(res => res.json());
     };
 
-    public getAll():Observable<any> {
+    public getAll(): Observable<any> {
         return this.http.get(this.heroesURL).map(res => res.json());
     };
 
-    public remove(key$:string):Observable<any> {
-        let url:string = `${this.heroURL}/${key$}.json`;
+    public remove(key$: string): Observable<any> {
+        let url: string = `${this.heroURL}/${key$}.json`;
 
         return this.http.delete(url).map(res => res.json());
     };

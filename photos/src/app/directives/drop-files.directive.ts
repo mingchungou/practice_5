@@ -1,15 +1,18 @@
 
 import {Directive, EventEmitter, ElementRef, HostListener, Input, Output} from "@angular/core";
 
-//Loading classes
+//Loading models
 import {FileItem} from "../models/file-item";
 
 @Directive({
     selector: "[ngDropFiles]"
 })
 export class DropFilesDirective {
-    @Input() files: FileItem[] = [];
-    @Output() fileOn: EventEmitter<boolean> = new EventEmitter();
+    @Input()
+    files: FileItem[] = [];
+
+    @Output()
+    fileOn: EventEmitter<boolean> = new EventEmitter();
 
     constructor(private el: ElementRef) {
 
@@ -86,7 +89,7 @@ export class DropFilesDirective {
     //Function for adding files to array
     private addFile(fileList: FileList): void {
         for (let property in Object.getOwnPropertyNames(fileList)) {
-            let temp = fileList[property];
+            let temp: File = fileList[property];
 
             if (this.isFileUploadable(temp)) {
                 let file: FileItem = new FileItem(temp);

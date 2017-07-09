@@ -1,5 +1,5 @@
 
-import {Component, OnInit} from "@angular/core";
+import {Component} from "@angular/core";
 
 //Loading services
 import {ChatService} from "../../services/chat.service";
@@ -8,16 +8,12 @@ import {ChatService} from "../../services/chat.service";
     selector: "app-login",
     templateUrl: "./login.component.html"
 })
-export class LoginComponent implements OnInit {
-    constructor(private chatService:ChatService) {
+export class LoginComponent {
+    constructor(private chatService: ChatService) {
 
     };
 
-    ngOnInit() {
-
-    };
-
-    private login(type:string) {
+    private login(type: string) {
         this.chatService.login(type);
     };
 };

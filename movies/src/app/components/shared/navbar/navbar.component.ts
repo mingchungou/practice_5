@@ -7,9 +7,9 @@ import {Router} from "@angular/router";
     templateUrl: "./navbar.component.html"
 })
 export class NavbarComponent implements OnInit {
-    private items:object[] = [];
+    private items: object[] = [];
 
-    constructor(private router:Router) {
+    constructor(private router: Router) {
 
     };
 
@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
         }];
     };
 
-    private searchMovie(value:string):void {
+    private searchMovie(value: string): void {
         if (value.length === 0) {
             return;
         }

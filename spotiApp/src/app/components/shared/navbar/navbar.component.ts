@@ -6,7 +6,7 @@ import {Component, OnInit} from "@angular/core";
     templateUrl: "./navbar.component.html"
 })
 export class NavbarComponent implements OnInit {
-    private items:object[] = [];
+    private items: object[] = [];
 
     ngOnInit() {
         this.items = [{

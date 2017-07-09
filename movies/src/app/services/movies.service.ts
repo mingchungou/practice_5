@@ -6,43 +6,43 @@ import "rxjs/Rx";
 
 @Injectable()
 export class MoviesService {
-    private apiKey:string = "9275f16f1cbeb7de847b157de4b2b1f9";
-    private urlMoviedb:string = "https://api.themoviedb.org/3";
-    public movies:object[] = [];
+    private apiKey: string = "9275f16f1cbeb7de847b157de4b2b1f9";
+    private urlMoviedb: string = "https://api.themoviedb.org/3";
+    public movies: object[] = [];
 
-    constructor(private jsonp:Jsonp) {
+    constructor(private jsonp: Jsonp) {
 
     };
 
-    public getTopTracks():Observable<any> {
-        let url:string = `${this.urlMoviedb}/discover/movie?sort_by=popularity.desc&api_key=${this.apiKey}&language=es&callback=JSONP_CALLBACK`;
+    public getTopTracks(): Observable<any> {
+        let url: string = `${this.urlMoviedb}/discover/movie?sort_by=popularity.desc&api_key=${this.apiKey}&language=es&callback=JSONP_CALLBACK`;
 
         return this.jsonp.get(url).map(res => res.json().results);
     };
 
-    public getTopTracksKids():Observable<any> {
-        let url:string = `${this.urlMoviedb}/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=${this.apiKey}&language=es&callback=JSONP_CALLBACK`;
+    public getTopTracksKids(): Observable<any> {
+        let url: string = `${this.urlMoviedb}/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=${this.apiKey}&language=es&callback=JSONP_CALLBACK`;
 
         return this.jsonp.get(url).map(res => res.json().results);
     };
 
-    private parseDateString(date:Date):string {
+    private parseDateString(date: Date): string {
         return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
     };
 
-    public getBillboard():Observable<any> {
-        let fromString:string = this.parseDateString(new Date());
-        let to:Date = new Date();
+    public getBillboard(): Observable<any> {
+        let fromString: string = this.parseDateString(new Date());
+        let to: Date = new Date();
         to.setDate(to.getDate() + 7);
-        let toString:string = this.parseDateString(to);
+        let toString: string = this.parseDateString(to);
 
-        let url:string = `${this.urlMoviedb}/discover/movie?primary_release_date.gte=${fromString}&primary_release_date.lte=${toString}&api_key=${this.apiKey}&language=es&callback=JSONP_CALLBACK`;
+        let url: string = `${this.urlMoviedb}/discover/movie?primary_release_date.gte=${fromString}&primary_release_date.lte=${toString}&api_key=${this.apiKey}&language=es&callback=JSONP_CALLBACK`;
 
         return this.jsonp.get(url).map(res => res.json().results);
     };
 
-    public searchMovie(text:string):Observable<any> {
-        let url:string = `${this.urlMoviedb}/search/movie?query=${text}&sort_by=popularity.desc&api_key=${this.apiKey}&language=es&callback=JSONP_CALLBACK`;
+    public searchMovie(text: string): Observable<any> {
+        let url: string = `${this.urlMoviedb}/search/movie?query=${text}&sort_by=popularity.desc&api_key=${this.apiKey}&language=es&callback=JSONP_CALLBACK`;
 
         return this.jsonp.get(url).map(res => {
             this.movies = res.json().results;

@@ -1,5 +1,6 @@
 
-import {Component, OnInit, ElementRef} from "@angular/core";
+import {Component, ElementRef, OnDestroy} from "@angular/core";
+import {Subscription} from "rxjs/Rx";
 
 //Loading services
 import {ChatService} from "../../services/chat.service";
@@ -8,12 +9,13 @@ import {ChatService} from "../../services/chat.service";
     selector: "app-chat",
     templateUrl: "./chat.component.html"
 })
-export class ChatComponent implements OnInit {
-    private message:string = "";
+export class ChatComponent implements OnDestroy {
+    private messagesGetSubs: Subscription;
+    private message: string = "";
 
-    constructor(public chatService:ChatService,
-                private el:ElementRef) {
-        chatService.getMessages().subscribe(() => {
+    constructor(private chatService: ChatService,
+                private el: ElementRef) {
+        this.messagesGetSubs = chatService.getMessages().subscribe(() => {
             setTimeout(() => {
                 let messageContent = el.nativeElement.querySelector(".message-content");
                 messageContent.scrollTop = messageContent.scrollHeight;
@@ -21,11 +23,11 @@ export class ChatComponent implements OnInit {
         });
     };
 
-    ngOnInit() {
-
+    ngOnDestroy() {
+        this.messagesGetSubs.unsubscribe();
     };
 
-    private send():void {
+    private send(): void {
         if (this.message.length === 0) {
             return;
         }

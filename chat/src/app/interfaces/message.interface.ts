@@ -1,6 +1,6 @@
 
 export interface Message {
-    name:string;
-    message:string;
-    uid?:string;
+    name: string;
+    message: string;
+    uid?: string;
 };

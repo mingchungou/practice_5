@@ -10,22 +10,21 @@ import {Message} from "../interfaces/message.interface";
 
 @Injectable()
 export class ChatService {
-    public chats:FirebaseListObservable<any[]>;
-    public user:any;
+    public chats: FirebaseListObservable<any[]>;
+    public user: any;
 
-    constructor(private db:AngularFireDatabase,
-                public angularFireAuth:AngularFireAuth) {
-        let userStored:string = localStorage.getItem("user");
+    constructor(private db: AngularFireDatabase,
+                public angularFireAuth: AngularFireAuth) {
+        let userStored: string = localStorage.getItem("user");
 
         if (userStored) {
             this.user = JSON.parse(userStored);
-            console.log(this.user);
         } else {
             this.user = null;
         }
     };
 
-    public getMessages():Observable<any> {
+    public getMessages(): Observable<any> {
         this.chats = this.db.list("/chats", {
             query: {
                 limitToLast: 20,
@@ -36,8 +35,8 @@ export class ChatService {
         return this.chats;
     };
 
-    public addMessage(text:string):Promise<any> {
-        let message:Message = {
+    public addMessage(text: string): firebase.database.ThenableReference {
+        let message: Message = {
             name: this.user.displayName,
             message: text,
             uid: this.user.uid
@@ -46,8 +45,8 @@ export class ChatService {
         return this.chats.push(message);
     };
 
-    public login(type:string):void {
-        let loginObject:any;
+    public login(type: string): void {
+        let loginObject: any;
 
         if (type === "google") {
             loginObject = firebase.auth.GoogleAuthProvider;
@@ -61,7 +60,7 @@ export class ChatService {
         });
     };
 
-    public logout():void {
+    public logout(): void {
         localStorage.removeItem("user");
         this.user = null;
         this.angularFireAuth.auth.signOut();

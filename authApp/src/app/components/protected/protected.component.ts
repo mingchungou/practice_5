@@ -1,6 +1,7 @@
 
 import {Component, OnInit} from "@angular/core";
 
+//Loading services
 import {AuthService} from "../../services/auth.service";
 
 @Component({
@@ -8,9 +9,9 @@ import {AuthService} from "../../services/auth.service";
     templateUrl: "./protected.component.html"
 })
 export class ProtectedComponent implements OnInit {
-    private profile:object;
+    private profile: object;
 
-    constructor(private authService:AuthService) {
+    constructor(private authService: AuthService) {
 
     };
 
